@@ -1,80 +1,128 @@
-# Bài 06 - Cấu Trúc Dữ Liệu: List, Tuple, Dict, Set
+# Bài 06 - Cấu Trúc Dữ Liệu Cơ Bản: List, Tuple, Dict, Set
 
-## Mục tiêu
+## 1. Mục tiêu
 
-- Phân biệt được 4 cấu trúc dữ liệu phổ biến.
-- Biết khi nào dùng loại nào.
-- Thực hiện thao tác thêm, sửa, xóa cơ bản.
+- Phân biệt 4 cấu trúc dữ liệu phổ biến.
+- Chọn đúng cấu trúc theo bài toán.
+- Thực hiện thêm/sửa/xóa/truy cập dữ liệu.
 
-## 1. List (Danh sách)
+## 2. Tổng quan
 
-- Có thứ tự.
-- Có thể thay đổi.
-- Cho phép trùng lặp.
+Python có nhiều cách lưu dữ liệu. 4 loại quan trọng nhất ở mức cơ bản:
+
+1. `list` - danh sách có thứ tự, sửa được.
+2. `tuple` - danh sách có thứ tự, không sửa được.
+3. `dict` - dữ liệu dạng khóa:giá trị.
+4. `set` - tập hợp, không trùng lặp.
+
+## 3. List
 
 ```python
 mon_hoc = ["Toán", "Văn", "Anh"]
+print(mon_hoc[0])     # Toán
 mon_hoc.append("Tin")
-mon_hoc[0] = "Toán nâng cao"
+mon_hoc[1] = "Ngữ văn"
 print(mon_hoc)
 ```
 
-## 2. Tuple (Bộ giá trị)
+Các thao tác hay dùng:
 
-- Có thứ tự.
-- Không thể thay đổi sau khi tạo.
+- `append()` thêm cuối.
+- `insert()` chèn theo vị trí.
+- `remove()` xóa theo giá trị.
+- `pop()` xóa theo vị trí.
+- `len()` lấy độ dài.
+
+## 4. Tuple
 
 ```python
 toa_do = (10, 20)
-print(toa_do[0])  # 10
+print(toa_do[0])
 ```
 
-Dùng khi dữ liệu cố định, ví dụ tọa độ, ngày tháng không muốn sửa.
+Tuple thường dùng cho dữ liệu cố định:
 
-## 3. Dict (Từ điển)
+- Ngày tháng.
+- Tọa độ.
+- Cặp giá trị không muốn thay đổi.
 
-- Dữ liệu dạng cặp `khóa: giá trị`.
-- Truy cập nhanh theo khóa.
+## 5. Dictionary (Dict)
 
 ```python
 hoc_sinh = {
     "ten": "Lan",
-    "tuoi": 11,
-    "lop": "6A"
+    "lop": "6A",
+    "diem_toan": 8.5
 }
 
 print(hoc_sinh["ten"])
-hoc_sinh["tuoi"] = 12
+hoc_sinh["diem_toan"] = 9.0
+hoc_sinh["truong"] = "THCS ABC"
 print(hoc_sinh)
 ```
 
-## 4. Set (Tập hợp)
-
-- Không có thứ tự cố định.
-- Không chứa phần tử trùng.
+## 6. Set
 
 ```python
-so = {1, 2, 2, 3}
-print(so)  # {1, 2, 3}
+ds = [1, 1, 2, 2, 3, 4]
+tap = set(ds)
+print(tap)  # {1, 2, 3, 4}
 ```
 
-## So sánh nhanh
+Set dùng tốt khi:
 
-- `list`: danh sách có thứ tự, sửa được.
-- `tuple`: có thứ tự, không sửa được.
-- `dict`: quản lý theo khóa.
-- `set`: loại bỏ trùng lặp.
+- Cần loại phần tử trùng.
+- Cần kiểm tra tồn tại nhanh.
 
-## Bài tập
+## 7. Ví dụ tổng hợp
 
-1. Tạo list 5 món ăn yêu thích, in món thứ 2.
-2. Thêm 1 món mới vào list.
-3. Tạo dict thông tin 1 cuốn sách (tên, tác giả, giá).
-4. Từ list `[1, 1, 2, 2, 3, 3, 4]`, dùng set để xóa trùng.
+```python
+danh_sach_hoc_sinh = [
+    {"ten": "An", "diem": 8.0},
+    {"ten": "Bình", "diem": 7.5},
+    {"ten": "Chi", "diem": 9.0}
+]
 
-## Thử thách mini
+for hs in danh_sach_hoc_sinh:
+    print(hs["ten"], "-", hs["diem"])
+```
 
-Tạo danh sách 3 học sinh bằng `list` chứa `dict`, rồi in:
+## 8. Lỗi thường gặp
 
-- Tên từng học sinh
-- Điểm trung bình từng học sinh
+1. Truy cập index vượt quá độ dài list.
+2. Truy cập dict bằng khóa không tồn tại.
+3. Nhầm giữa `list` và `dict`.
+
+## 9. Bài tập
+
+### Mức 1
+
+1. Tạo list 5 môn học yêu thích.
+2. In phần tử đầu và cuối của list.
+
+### Mức 2
+
+1. Tạo dict thông tin 1 cuốn sách.
+2. Cập nhật giá sách mới rồi in lại.
+
+### Mức 3
+
+1. Tạo list chứa 3 dict học sinh (tên + điểm).
+2. In học sinh có điểm cao nhất.
+3. Từ list số có trùng, dùng set để loại trùng.
+
+## 10. Thử thách mini
+
+Tạo chương trình quản lý danh sách việc cần làm (`todo`):
+
+- Thêm việc.
+- Xóa việc.
+- In toàn bộ việc.
+
+Gợi ý: dùng `list` để lưu các công việc.
+
+## 11. Checklist
+
+- [ ] Mình phân biệt rõ list/tuple/dict/set.
+- [ ] Mình thao tác được với từng kiểu.
+- [ ] Mình chọn đúng kiểu dữ liệu cho bài toán đơn giản.

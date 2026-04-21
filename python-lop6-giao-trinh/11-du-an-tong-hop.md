@@ -1,29 +1,29 @@
 # Bài 11 - Dự Án Tổng Hợp: Quản Lý Điểm Học Sinh
 
-## Mục tiêu
+## 1. Mục tiêu
 
-- Kết hợp kiến thức: biến, hàm, list, dict, vòng lặp, file JSON.
-- Tạo một chương trình gần với nhu cầu thực tế.
-- Rèn kỹ năng chia bài toán thành các bước nhỏ.
+- Tổng hợp toàn bộ kiến thức đã học.
+- Xây dựng chương trình có menu và lưu dữ liệu.
+- Rèn kỹ năng chia bài toán thành module nhỏ.
 
-## Yêu cầu dự án
+## 2. Yêu cầu chức năng
 
-Viết chương trình quản lý điểm có các chức năng:
+Chương trình cần có:
 
 1. Thêm học sinh.
 2. Nhập điểm Toán, Văn, Anh.
 3. Tính điểm trung bình.
 4. Xếp loại học lực.
 5. In danh sách học sinh.
-6. Lưu dữ liệu ra file JSON.
-7. Đọc dữ liệu từ file JSON khi mở chương trình.
+6. Lưu dữ liệu JSON.
+7. Đọc dữ liệu từ JSON.
 
-## Thiết kế dữ liệu
+## 3. Thiết kế dữ liệu
 
-Mỗi học sinh là một `dict`:
+Mỗi học sinh:
 
 ```python
-hoc_sinh = {
+{
     "ten": "An",
     "toan": 8.0,
     "van": 7.5,
@@ -31,9 +31,9 @@ hoc_sinh = {
 }
 ```
 
-Toàn bộ lớp là một `list` chứa nhiều học sinh.
+Danh sách lớp là `list` chứa nhiều học sinh.
 
-## Gợi ý các hàm cần có
+## 4. Thiết kế hàm
 
 ```python
 def tinh_diem_tb(toan, van, anh):
@@ -51,39 +51,69 @@ def xep_loai(tb):
     return "Yếu"
 ```
 
-```python
-def in_thong_tin(hs):
-    tb = tinh_diem_tb(hs["toan"], hs["van"], hs["anh"])
-    loai = xep_loai(tb)
-    print(f'{hs["ten"]}: TB={tb:.2f}, Xếp loại={loai}')
-```
-
-## Gợi ý menu chương trình
+## 5. Menu mẫu
 
 ```text
 1. Thêm học sinh
 2. Xem danh sách
 3. Lưu file JSON
 4. Đọc file JSON
-5. Thoát
+5. Thống kê
+0. Thoát
 ```
 
-## Mục tiêu chất lượng
+## 6. Khung chương trình gợi ý
 
-- Chạy ổn định, không lỗi khi nhập sai đơn giản.
-- Dữ liệu lưu đúng định dạng JSON.
-- Tên hàm và biến rõ nghĩa.
+```python
+import json
 
-## Nâng cấp thêm (khuyến khích)
+danh_sach = []
 
-- Tìm học sinh điểm trung bình cao nhất.
-- Tìm học sinh theo tên.
-- Sửa điểm của một học sinh.
-- Xóa học sinh khỏi danh sách.
+while True:
+    print("\n=== QUẢN LÝ ĐIỂM ===")
+    print("1. Thêm học sinh")
+    print("2. Xem danh sách")
+    print("3. Lưu JSON")
+    print("4. Đọc JSON")
+    print("0. Thoát")
 
-## Thử thách mini
+    chon = input("Chọn: ")
+    if chon == "0":
+        break
+```
 
-Thêm chức năng thống kê:
+## 7. Tiêu chí hoàn thành dự án
 
-- Số học sinh Giỏi, Khá, Trung bình, Yếu.
-- Điểm trung bình cả lớp.
+- Chạy ổn định, không crash khi nhập cơ bản.
+- Dữ liệu lưu đúng và đọc lại được.
+- Code có hàm rõ ràng.
+- In kết quả dễ nhìn.
+
+## 8. Nâng cấp khuyến khích
+
+1. Tìm học sinh điểm TB cao nhất.
+2. Tìm học sinh theo tên.
+3. Sửa điểm và xóa học sinh.
+4. In thống kê số học sinh theo xếp loại.
+
+## 9. Bài tập dự án
+
+### Mức 1
+
+1. Hoàn thành chức năng thêm + xem danh sách.
+
+### Mức 2
+
+1. Thêm chức năng lưu/đọc JSON.
+
+### Mức 3
+
+1. Thêm thống kê và tìm kiếm.
+
+## 10. Checklist
+
+- [ ] Có menu hoạt động.
+- [ ] Tính đúng điểm trung bình.
+- [ ] Xếp loại đúng logic.
+- [ ] Lưu và đọc JSON thành công.
+- [ ] Có ít nhất 1 chức năng nâng cấp.

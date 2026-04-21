@@ -1,26 +1,26 @@
 # Bài 03 - Toán Tử Và Câu Lệnh Điều Kiện
 
-## Mục tiêu
+## 1. Mục tiêu bài học
 
-- Biết dùng toán tử để tính toán.
-- Hiểu cách so sánh giá trị.
-- Viết được chương trình rẽ nhánh bằng `if`, `elif`, `else`.
+- Dùng được toán tử số học và so sánh.
+- Hiểu và viết đúng cấu trúc `if`, `elif`, `else`.
+- Giải được các bài toán rẽ nhánh cơ bản.
 
-## Toán tử số học
+## 2. Toán tử số học
 
 ```python
 a = 10
 b = 3
 
-print(a + b)  # 13
-print(a - b)  # 7
-print(a * b)  # 30
-print(a / b)  # 3.333...
-print(a % b)  # 1 (phần dư)
-print(a // b) # 3 (chia lấy phần nguyên)
+print(a + b)   # 13
+print(a - b)   # 7
+print(a * b)   # 30
+print(a / b)   # 3.333...
+print(a // b)  # 3
+print(a % b)   # 1
 ```
 
-## Toán tử so sánh
+## 3. Toán tử so sánh
 
 - `>` lớn hơn
 - `<` nhỏ hơn
@@ -29,58 +29,115 @@ print(a // b) # 3 (chia lấy phần nguyên)
 - `==` bằng nhau
 - `!=` khác nhau
 
-## Toán tử logic
+## 4. Toán tử logic
 
-- `and`: và
-- `or`: hoặc
-- `not`: phủ định
+- `and`: cả hai điều kiện cùng đúng.
+- `or`: chỉ cần một điều kiện đúng.
+- `not`: đảo ngược đúng/sai.
 
 ```python
 tuoi = 12
-co_the_thi = tuoi >= 11 and tuoi <= 15
-print(co_the_thi)  # True
+print(tuoi >= 10 and tuoi <= 15)  # True
 ```
 
-## Câu lệnh điều kiện
+## 5. Cấu trúc điều kiện `if`
 
 ```python
-diem = 8
+diem = 8.0
 
 if diem >= 9:
     print("Xuất sắc")
 elif diem >= 7:
     print("Khá")
+elif diem >= 5:
+    print("Trung bình")
 else:
     print("Cần cố gắng")
 ```
 
-## Ví dụ thực tế: kiểm tra số chẵn/lẻ
+## 6. Ví dụ thực tế
+
+### 6.1 Kiểm tra số chẵn/lẻ
 
 ```python
-n = int(input("Nhập một số nguyên: "))
+n = int(input("Nhập số nguyên: "))
 
 if n % 2 == 0:
-    print("Đây là số chẵn")
+    print("Số chẵn")
 else:
-    print("Đây là số lẻ")
+    print("Số lẻ")
 ```
 
-## Lỗi thường gặp
+### 6.2 So sánh hai số
 
-- Dùng `=` thay vì `==` trong điều kiện.
-- Quên dấu `:` ở cuối dòng `if`, `elif`, `else`.
-- Thụt đầu dòng không đúng.
+```python
+a = float(input("Nhập a: "))
+b = float(input("Nhập b: "))
 
-## Bài tập
+if a > b:
+    print("a lớn hơn b")
+elif a < b:
+    print("a nhỏ hơn b")
+else:
+    print("a bằng b")
+```
+
+## 7. Lỗi thường gặp
+
+1. Dùng `=` thay vì `==` trong điều kiện.
+2. Quên dấu `:` sau `if`.
+3. Thụt đầu dòng không đồng nhất.
+4. Điều kiện chồng chéo sai thứ tự.
+
+## 8. Mẹo viết điều kiện tốt
+
+- Viết từ trường hợp đặc biệt đến chung.
+- Tránh viết điều kiện quá dài trong một dòng.
+- Tách thành nhiều biến logic nếu cần.
+
+## 9. Bài tập
+
+### Mức 1
 
 1. Nhập nhiệt độ, in `"Nóng"` nếu > 30, ngược lại in `"Mát"`.
-2. Nhập một số, kiểm tra là số chẵn hay lẻ.
-3. Nhập điểm, xếp loại: Giỏi/Khá/Trung bình/Yếu.
-4. Nhập 2 số, in số lớn hơn.
+2. Nhập số nguyên, kiểm tra chẵn/lẻ.
 
-## Thử thách mini
+### Mức 2
 
-Viết chương trình kiểm tra năm nhuận đơn giản:
+1. Nhập điểm, xếp loại theo 4 mức.
+2. Nhập tuổi, kiểm tra có đủ điều kiện tham gia CLB (10-15 tuổi) hay không.
 
-- Chia hết cho 4 thì tạm coi là năm nhuận.
-- Nếu không chia hết cho 4 thì không nhuận.
+### Mức 3
+
+1. Nhập 3 số, in ra số lớn nhất.
+2. Viết chương trình tính tiền vé:
+   - Dưới 6 tuổi: miễn phí
+   - 6-12 tuổi: 50%
+   - Trên 12 tuổi: 100%
+
+## 10. Thử thách mini
+
+Viết chương trình đăng nhập đơn giản:
+
+- Tên đăng nhập đúng là `admin`.
+- Mật khẩu đúng là `123456`.
+- Nếu sai một trong hai, báo "Đăng nhập thất bại".
+
+## 11. Đáp án tham khảo ngắn
+
+```python
+user = input("Tên đăng nhập: ")
+pwd = input("Mật khẩu: ")
+
+if user == "admin" and pwd == "123456":
+    print("Đăng nhập thành công")
+else:
+    print("Đăng nhập thất bại")
+```
+
+## 12. Checklist
+
+- [ ] Mình dùng được toán tử so sánh.
+- [ ] Mình viết đúng `if/elif/else`.
+- [ ] Mình phân biệt `=` và `==`.
+- [ ] Mình làm được bài xếp loại học lực.

@@ -1,45 +1,56 @@
-# Bài 07 - Chuỗi Và Xử Lý Văn Bản
+# Bài 07 - Chuỗi Và Xử Lý Văn Bản Trong Python
 
-## Mục tiêu
+## 1. Mục tiêu
 
-- Nắm được cách truy cập ký tự trong chuỗi.
-- Biết cắt chuỗi, nối chuỗi, tách chuỗi.
-- Dùng được các hàm xử lý chuỗi thông dụng.
+- Hiểu chuỗi là gì.
+- Biết truy cập ký tự, cắt chuỗi.
+- Dùng được các hàm chuỗi phổ biến.
+- Làm bài toán xử lý văn bản đơn giản.
 
-## Chuỗi là gì?
-
-Chuỗi là một dãy ký tự, ví dụ `"Python"`, `"Lớp 6A"`.
+## 2. Chuỗi cơ bản
 
 ```python
 ten = "Nguyen Van A"
 print(ten)
 ```
 
-## Truy cập ký tự và cắt chuỗi
+Chuỗi đặt trong dấu nháy đơn hoặc nháy kép.
+
+## 3. Truy cập ký tự
 
 ```python
-ten = "Nguyen Van A"
-print(ten[0])      # N
-print(ten[0:6])    # Nguyen
-print(ten[-1])     # A
+s = "Python"
+print(s[0])   # P
+print(s[1])   # y
+print(s[-1])  # n
 ```
 
-## Một số hàm hữu ích
+## 4. Cắt chuỗi (slicing)
+
+```python
+s = "Lap trinh Python"
+print(s[0:3])   # Lap
+print(s[4:10])  # trinh
+print(s[:3])    # Lap
+print(s[4:])    # trinh Python
+```
+
+## 5. Một số hàm chuỗi quan trọng
 
 ```python
 s = "  python cơ bản  "
-print(s.strip())                   # bỏ khoảng trắng đầu/cuối
-print(s.upper())                   # viết hoa
-print(s.lower())                   # viết thường
+print(s.strip())                 # bỏ khoảng trắng đầu/cuối
+print(s.upper())                 # viết hoa
+print(s.lower())                 # viết thường
 print(s.replace("cơ bản", "nâng cao"))
 ```
 
-## Tách và nối chuỗi
+## 6. Tách và nối chuỗi
 
 ```python
 mon = "Toán,Văn,Anh"
-danh_sach = mon.split(",")
-print(danh_sach)
+ds = mon.split(",")
+print(ds)
 ```
 
 ```python
@@ -49,27 +60,62 @@ ho_ten = ho + " " + ten
 print(ho_ten)
 ```
 
-## Kiểm tra chuỗi
+## 7. Kiểm tra trong chuỗi
 
 ```python
 email = "abc@gmail.com"
 if "@" in email:
     print("Email hợp lệ cơ bản")
 else:
-    print("Email chưa đúng")
+    print("Email chưa hợp lệ")
 ```
 
-## Bài tập
+## 8. Độ dài chuỗi
 
-1. Nhập họ tên, in ra họ tên viết hoa.
-2. Đếm số ký tự trong một chuỗi (không tính khoảng trắng đầu cuối).
-3. Kiểm tra email có chứa ký tự `@` hay không.
-4. Nhập một câu và thay từ `"Python"` thành `"Lập trình Python"`.
+```python
+text = "Python"
+print(len(text))  # 6
+```
 
-## Thử thách mini
+## 9. Lỗi thường gặp
 
-Viết chương trình nhập họ và tên riêng, sau đó in:
+1. Nhầm index bắt đầu từ 1 (thực tế bắt đầu từ 0).
+2. Cắt sai biên chuỗi.
+3. Quên xử lý khoảng trắng đầu/cuối.
 
-- Họ tên đầy đủ
-- Độ dài họ tên
-- Chữ cái đầu tiên của tên riêng
+## 10. Bài tập
+
+### Mức 1
+
+1. Nhập họ tên, in ra ký tự đầu tiên.
+2. In độ dài chuỗi tên.
+
+### Mức 2
+
+1. Nhập chuỗi, in bản viết hoa và viết thường.
+2. Nhập câu có dấu phẩy, tách thành list bằng `split(",")`.
+
+### Mức 3
+
+1. Kiểm tra email có `@` và `.` hay không.
+2. Chuẩn hóa họ tên: bỏ khoảng trắng dư đầu/cuối, viết hoa chữ cái đầu mỗi từ.
+
+## 11. Thử thách mini
+
+Viết chương trình tạo username từ họ tên:
+
+- Nhập họ tên.
+- Chuẩn hóa chữ thường.
+- Bỏ khoảng trắng thừa.
+- Đổi khoảng trắng giữa các từ thành dấu `.`.
+
+Ví dụ:
+
+- Input: `  Nguyen   Van  An `
+- Output: `nguyen.van.an`
+
+## 12. Checklist
+
+- [ ] Mình truy cập được ký tự theo index.
+- [ ] Mình dùng được `strip`, `split`, `replace`.
+- [ ] Mình làm được bài kiểm tra email cơ bản.

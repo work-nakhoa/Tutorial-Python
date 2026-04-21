@@ -1,74 +1,77 @@
 # Bài 08 - Làm Việc Với File Và JSON
 
-## Mục tiêu
+## 1. Mục tiêu
 
-- Biết đọc và ghi file văn bản.
-- Hiểu JSON là gì và dùng để lưu dữ liệu.
-- Biết lưu/đọc dữ liệu học sinh bằng JSON.
+- Đọc và ghi file text.
+- Hiểu chế độ mở file (`r`, `w`, `a`).
+- Lưu và đọc dữ liệu JSON bằng Python.
 
-## Vì sao cần file?
+## 2. Vì sao cần lưu file?
 
-Nếu chỉ lưu dữ liệu trong biến, tắt chương trình là mất.
-File giúp lưu dữ liệu lâu dài để lần sau mở lại.
+Nếu chỉ lưu trong biến, khi tắt chương trình dữ liệu sẽ mất.  
+Lưu file giúp:
 
-## Ghi file text
+- Giữ dữ liệu lâu dài.
+- Mở lại ở lần chạy sau.
+- Chia sẻ dữ liệu với chương trình khác.
+
+## 3. Đọc và ghi file text
+
+## 3.1 Ghi mới file (`w`)
 
 ```python
-with open("ghi_chu.txt", "w", encoding="utf-8") as f:
+with open("nhat_ky.txt", "w", encoding="utf-8") as f:
     f.write("Hôm nay học Python.\n")
     f.write("Mình đã học về file.\n")
 ```
 
-Giải thích:
-
-- `"w"`: ghi mới (xóa nội dung cũ nếu có).
-- `encoding="utf-8"`: lưu tiếng Việt có dấu.
-
-## Đọc file text
+## 3.2 Đọc file (`r`)
 
 ```python
-with open("ghi_chu.txt", "r", encoding="utf-8") as f:
+with open("nhat_ky.txt", "r", encoding="utf-8") as f:
     noi_dung = f.read()
     print(noi_dung)
 ```
 
-## Ghi thêm vào file
+## 3.3 Ghi nối tiếp (`a`)
 
 ```python
-with open("ghi_chu.txt", "a", encoding="utf-8") as f:
+with open("nhat_ky.txt", "a", encoding="utf-8") as f:
     f.write("Dòng này được thêm vào cuối file.\n")
 ```
 
-## JSON là gì?
+## 4. JSON là gì?
 
-JSON là định dạng dữ liệu rất phổ biến, dễ đọc, dễ trao đổi.
+JSON là định dạng dữ liệu dạng văn bản, rất phổ biến.
 
-Ví dụ dữ liệu JSON:
+Ví dụ JSON:
 
 ```json
 {
-  "ten": "Minh",
+  "ten": "An",
   "lop": "6A",
-  "diem_python": 9
+  "diem": 8.5
 }
 ```
 
-## Lưu dict vào JSON
+## 5. Làm việc với JSON trong Python
+
+## 5.1 Ghi JSON
 
 ```python
 import json
 
-du_lieu = {
-    "ten": "Minh",
+hoc_sinh = {
+    "ten": "An",
     "lop": "6A",
-    "diem_python": 9
+    "diem": 8.5
 }
 
 with open("hoc_sinh.json", "w", encoding="utf-8") as f:
-    json.dump(du_lieu, f, ensure_ascii=False, indent=2)
+    json.dump(hoc_sinh, f, ensure_ascii=False, indent=2)
 ```
 
-## Đọc JSON
+## 5.2 Đọc JSON
 
 ```python
 import json
@@ -79,13 +82,60 @@ with open("hoc_sinh.json", "r", encoding="utf-8") as f:
 print(data["ten"])
 ```
 
-## Bài tập
+## 6. Ví dụ tổng hợp
 
-1. Tạo file `nhat_ky.txt` và ghi 3 dòng.
-2. Đọc lại file vừa tạo và in ra màn hình.
-3. Lưu thông tin học sinh vào file JSON.
-4. Đọc file JSON và in tên học sinh, lớp.
+```python
+import json
 
-## Thử thách mini
+danh_sach = [
+    {"ten": "An", "toan": 8.0},
+    {"ten": "Bình", "toan": 7.5}
+]
 
-Tạo danh sách 3 học sinh (list chứa dict), lưu vào `danh_sach_hoc_sinh.json`, rồi đọc lại và in ra theo định dạng đẹp.
+with open("diem_toan.json", "w", encoding="utf-8") as f:
+    json.dump(danh_sach, f, ensure_ascii=False, indent=2)
+
+with open("diem_toan.json", "r", encoding="utf-8") as f:
+    ds_doc = json.load(f)
+
+for hs in ds_doc:
+    print(hs["ten"], hs["toan"])
+```
+
+## 7. Lỗi thường gặp
+
+1. Quên `encoding="utf-8"` khi có tiếng Việt.
+2. Mở sai chế độ file (`r` khi file chưa tồn tại).
+3. JSON sai cấu trúc do sửa tay không đúng.
+
+## 8. Bài tập
+
+### Mức 1
+
+1. Tạo file `ghi_chu.txt`, ghi 3 dòng.
+2. Đọc lại file và in ra màn hình.
+
+### Mức 2
+
+1. Lưu thông tin 1 học sinh vào `hoc_sinh.json`.
+2. Đọc JSON và in lại thông tin.
+
+### Mức 3
+
+1. Lưu list 5 học sinh vào JSON.
+2. Đọc file và in học sinh có điểm cao nhất.
+
+## 9. Thử thách mini
+
+Xây dựng chương trình "Sổ điểm mini":
+
+- Nhập nhiều học sinh.
+- Lưu ra `so_diem.json`.
+- Mở lại và in báo cáo danh sách điểm.
+
+## 10. Checklist
+
+- [ ] Mình đọc/ghi được file text.
+- [ ] Mình hiểu khác nhau giữa `w` và `a`.
+- [ ] Mình lưu/đọc được dữ liệu JSON.
+- [ ] Mình làm được bài lưu danh sách học sinh.

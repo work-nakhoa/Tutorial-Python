@@ -1,27 +1,19 @@
 # Bài 09 - Lập Trình Hướng Đối Tượng (OOP)
 
-## Mục tiêu
+## 1. Mục tiêu
 
 - Hiểu `class` và `object`.
-- Biết tạo thuộc tính và phương thức.
-- Biết dùng hàm khởi tạo `__init__`.
+- Tạo thuộc tính, phương thức.
+- Dùng `__init__` để khởi tạo dữ liệu.
+- Áp dụng OOP vào bài toán quản lý đơn giản.
 
-## OOP là gì?
-
-OOP giúp mô tả sự vật ngoài đời bằng code.
-
-Ví dụ:
-
-- Học sinh có: tên, lớp, tuổi (thuộc tính).
-- Học sinh có thể: giới thiệu bản thân, tính điểm trung bình (phương thức).
-
-## Khái niệm cơ bản
+## 2. Khái niệm cơ bản
 
 - `class`: bản thiết kế.
-- `object`: đối tượng tạo ra từ `class`.
-- `self`: đại diện cho chính đối tượng đang làm việc.
+- `object`: đối tượng tạo từ class.
+- `self`: đại diện cho đối tượng hiện tại.
 
-## Ví dụ cơ bản
+## 3. Ví dụ đầu tiên
 
 ```python
 class HocSinh:
@@ -30,17 +22,22 @@ class HocSinh:
         self.lop = lop
 
     def gioi_thieu(self):
-        print(f"Mình là {self.ten}, học lớp {self.lop}.")
+        print(f"Mình là {self.ten}, học lớp {self.lop}")
 
 hs1 = HocSinh("An", "6A")
 hs1.gioi_thieu()
 ```
 
-## Ví dụ 2: lớp Tài Khoản
+## 4. Thuộc tính và phương thức
+
+- Thuộc tính: dữ liệu của object (`ten`, `lop`).
+- Phương thức: hành động của object (`gioi_thieu`).
+
+## 5. Ví dụ thực tế: Tài khoản
 
 ```python
 class TaiKhoan:
-    def __init__(self, chu_tai_khoan, so_du):
+    def __init__(self, chu_tai_khoan, so_du=0):
         self.chu_tai_khoan = chu_tai_khoan
         self.so_du = so_du
 
@@ -54,27 +51,42 @@ class TaiKhoan:
             print("Không đủ số dư")
 
     def hien_thi(self):
-        print(f"Tài khoản {self.chu_tai_khoan}: {self.so_du} VND")
+        print(f"{self.chu_tai_khoan}: {self.so_du} VND")
 ```
 
-## Lỗi thường gặp
+## 6. Lỗi thường gặp
 
-- Quên tham số `self` trong phương thức.
-- Gõ sai tên thuộc tính.
-- Tạo object nhưng quên truyền đủ dữ liệu vào `__init__`.
+1. Quên `self` trong định nghĩa phương thức.
+2. Gọi phương thức sai tên.
+3. Truy cập thuộc tính chưa tồn tại.
 
-## Bài tập
+## 7. Bài tập
 
-1. Tạo class `Sach` gồm tên sách, tác giả, giá.
-2. Tạo class `TaiKhoan` có hàm `nap_tien`, `rut_tien`.
-3. Tạo class `HocSinh` có hàm `tinh_diem_trung_binh`.
-4. Tạo class `HinhChuNhat` có hàm tính diện tích, chu vi.
+### Mức 1
 
-## Thử thách mini
+1. Tạo class `Sach` có thuộc tính tên, tác giả, giá.
+2. Viết phương thức in thông tin sách.
 
-Xây dựng class `QuanLyHocSinh` có:
+### Mức 2
 
-- Danh sách học sinh
-- Hàm thêm học sinh
-- Hàm in toàn bộ danh sách
-- Hàm tìm học sinh có điểm trung bình cao nhất
+1. Tạo class `HocSinh` có điểm 3 môn.
+2. Viết phương thức tính điểm trung bình.
+
+### Mức 3
+
+1. Tạo class `QuanLyHocSinh` chứa list học sinh.
+2. Có phương thức thêm học sinh, in danh sách, tìm điểm cao nhất.
+
+## 8. Thử thách mini
+
+Làm chương trình quản lý thư viện mini:
+
+- Thêm sách.
+- Hiển thị sách.
+- Tìm sách theo tên.
+
+## 9. Checklist
+
+- [ ] Mình hiểu class/object.
+- [ ] Mình dùng được `__init__`.
+- [ ] Mình viết được ít nhất 1 class có 2 phương thức.
